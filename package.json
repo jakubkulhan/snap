@@ -1,0 +1,16 @@
+{
+  "name": "@jakubkulhan/snap",
+  "version": "0.0.1",
+  "author": "Jakub Kulhan <ahoj@jakubkulhan.cz>",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "@esm-bundle/chai": "^4.3.4-fix.0",
+    "@web/dev-server-esbuild": "^1.0.2",
+    "@web/test-runner": "^0.18.2",
+    "@web/test-runner-puppeteer": "^0.16.0"
+  },
+  "scripts": {
+    "test": "wtr --node-resolve --puppeteer"
+  }
+}
