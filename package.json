@@ -1,6 +1,6 @@
 {
   "name": "@jakubkulhan/snap",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "author": "Jakub Kulhan <ahoj@jakubkulhan.cz>",
   "license": "MIT",
   "type": "module",
@@ -8,9 +8,20 @@
     "@esm-bundle/chai": "^4.3.4-fix.0",
     "@web/dev-server-esbuild": "^1.0.2",
     "@web/test-runner": "^0.18.2",
-    "@web/test-runner-puppeteer": "^0.16.0"
+    "@web/test-runner-puppeteer": "^0.16.0",
+    "terser": "^5.31.6",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4"
   },
   "scripts": {
-    "test": "wtr --node-resolve --puppeteer"
-  }
+    "build": "tsup src/index.ts --format esm,cjs --legacy-output --dts --minify terser --treeshake --sourcemap",
+    "test": "wtr --node-resolve --puppeteer",
+    "clean": "rm -rf dist/*"
+  },
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ]
 }
