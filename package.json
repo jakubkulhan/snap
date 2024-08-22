@@ -4,6 +4,7 @@
   "author": "Jakub Kulhan <ahoj@jakubkulhan.cz>",
   "license": "MIT",
   "type": "module",
+  "repository": "github:jakubkulhan/snap",
   "devDependencies": {
     "@esm-bundle/chai": "^4.3.4-fix.0",
     "@web/dev-server-esbuild": "^1.0.2",
