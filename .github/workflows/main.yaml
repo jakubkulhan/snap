@@ -8,4 +8,18 @@ jobs:
         with:
           node-version: '>=22.0.0'
       - run: npm install
-      - run: npm test
+      - run: npm run test
+  publish:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '>=22.0.0'
+      - run: npm install
+      - run: npm run build
+      - run: npm version $(git show --no-patch --date=format:'%Y%m%d%H%M%S' --format="0.0.0-%cd-%h")
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
