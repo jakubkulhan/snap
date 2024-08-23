@@ -15,13 +15,14 @@
     "typescript": "^5.5.4"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --legacy-output --dts --minify terser --treeshake --sourcemap",
+    "build": "tsup src/snap.ts --format esm,cjs --legacy-output --dts --minify terser --treeshake --sourcemap",
+    "check:ts": "tsc --noEmit",
     "test": "wtr --node-resolve --puppeteer",
     "clean": "rm -rf dist/*"
   },
-  "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/snap.js",
+  "module": "dist/esm/snap.js",
+  "types": "dist/snap.d.ts",
   "files": [
     "dist"
   ]

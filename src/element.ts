@@ -66,6 +66,7 @@ export class SnapElement extends HTMLElement implements EventListenerObject {
             }
             handler = this.templateResult.anonymousEventHandlers[handlerName];
         } else {
+            // @ts-ignore
             handler = this[handlerName];
         }
 
@@ -123,6 +124,7 @@ function deserializeTemplateResult(data: Array<string>): TemplateResult {
         while (fragmentIndicesLength > 0) {
             const fragmentIndex = data.shift();
             const fragmentDataLength = parseInt(data.shift());
+            // @ts-ignore
             fragmentResults[fragmentIndex] = deserializeTemplateResult(data.slice(0, fragmentDataLength));
             data = data.slice(fragmentDataLength);
             fragmentIndicesLength--;
@@ -148,6 +150,7 @@ function serializeTemplateResult(result: TemplateResult): Array<string> {
         data.push(String(fragmentIndices.length));
         for (const fragmentIndex of fragmentIndices) {
             data.push(fragmentIndex);
+            // @ts-ignore
             const fragmentData = serializeTemplateResult(result.fragmentResults[fragmentIndex]);
             data.push(String(fragmentData.length));
             data = data.concat(fragmentData)
